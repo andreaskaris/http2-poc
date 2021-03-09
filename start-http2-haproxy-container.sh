@@ -11,4 +11,4 @@ if [ "$SERVER_IP" == "" ]; then
 	exit 1
 fi
 
-podman run -e SERVER_IP=${SERVER_IP} -p 8083:8083 -p 8084:8084 -p 8085:8085 --name http2-haproxy -d ${REGISTRY}/http2-haproxy
+podman run -e SERVER_IP=${SERVER_IP} --cap-add=NET_RAW --cap-add=NET_ADMIN -p 8083:8083 -p 8084:8084 -p 8085:8085 --name http2-haproxy -d ${REGISTRY}/http2-haproxy
